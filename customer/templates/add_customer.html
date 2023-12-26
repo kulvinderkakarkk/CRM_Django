@@ -15,7 +15,11 @@
 			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		{% endif %}
+		{% if todo == 'add' %}
 		<h1>Add Customer Record</h1>
+		{% else %}
+		<h1>Update Customer Record</h1>
+		{% endif %}
     {{form.as_p}}
 	{% if todo == 'add' %}
 	<button type='submit' class="btn btn-primary">ADD</button>
