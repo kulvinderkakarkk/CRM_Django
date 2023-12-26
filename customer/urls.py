@@ -3,5 +3,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    path('all/', views.allcustomers, name='customer.list')
+    path('all/', views.allcustomers, name='customer.list'),
+    path('add/', views.AddCustomer, name='customer.add')
 ]

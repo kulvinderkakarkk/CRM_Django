@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<button type="button" class="btn btn-dark ms-5">Add Employee</button>
+<a href="{% url 'customer.add' %}" type="button" class="btn btn-dark ms-5">Add Employee</a>
 <br><br>
 <div class="ms-5 me-5 table-responsive-sm">
     <table class="table table-striped table-hover table-bordered">
@@ -19,6 +19,7 @@
             </tr>
         </thead>
         <tbody>
+            {% for customer in all_customers %}
             <tr>
                 <th scope="row" class="text text-center">
                     <a href="" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -28,14 +29,26 @@
                         <i class="fas fa-trash"></i>
                     </a>
                 </th>
-                <td class="text text-center">Mark</td>
-                <td class="text text-center">Otto</td>
-                <td class="text text-center">@mdo</td>
-                <td class="text text-center">Mark</td>
-                <td class="text text-center">Otto</td>
-                <td class="text text-center">@mdo</td>
-                <td class="text text-center">@mdo</td>
+                <td class="text text-center">{{customer.customer_name}}</td>
+                <td class="text text-center">{{customer.customer_address}}</td>
+                <td class="text text-center">{{customer.customer_email}}</td>
+                <td class="text text-center">{{customer.phone_number}}</td>
+                <td class="text text-center">{{customer.state}}</td>
+                <td class="text text-center">{{customer.country}}</td>
+                <td class="text text-center">{{customer.last_updated_by}}</td>
             </tr>
+            {% empty %}
+            <tr>
+                <th scope="row" class="text text-center"></th>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+                <td class="text text-center fw-lighter fst-italic">Empty</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
