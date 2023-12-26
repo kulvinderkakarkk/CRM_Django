@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="col-md-6 offset-md-3">
-<form method="POST" action="{% url 'customer.add' %}">
+<form method="POST">
     {% csrf_token %}
     {% if form.errors %}
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,7 +17,11 @@
 		{% endif %}
 		<h1>Add Customer Record</h1>
     {{form.as_p}}
+	{% if todo == 'add' %}
 	<button type='submit' class="btn btn-primary">ADD</button>
+	{% else %}
+	<button type='submit' class="btn btn-primary">UPDATE</button>
+	{% endif %}
 </form>
 </div>
 {% endblock %}
